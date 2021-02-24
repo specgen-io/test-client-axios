@@ -36,12 +36,14 @@ commands:
       - run:
           name: Install service-go
           command: |
-            set +e
-            wget --help
-            curl --help
-            set -e
-      # - wait-url:
-      #     url: http://localhost:8081/docs/index.html?url=swagger.yaml
+            curl -L https://github.com/specgen-io/specgen-test-service-go/releases/download/<< pipeline.parameters.specgen-version >>/service-go_linux_amd64.zip > service-go.zip
+            unzip -o service-go.zip
+            ls -la
+      - run:
+          name: Start service-go
+          command: ./service-go --port << parameters.port >>
+      - wait-url:
+          url: http://localhost:<< parameters.port >>/
 
   wait-url:
     parameters:
