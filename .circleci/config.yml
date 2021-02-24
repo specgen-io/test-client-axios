@@ -42,6 +42,7 @@ commands:
       - run:
           name: Start service-go
           command: ./service-go --port << parameters.port >>
+          background: true
       - wait-url:
           url: http://localhost:<< parameters.port >>/
 
