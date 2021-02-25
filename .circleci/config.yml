@@ -23,9 +23,11 @@ jobs:
             npm install
             npm run codegen
             export SERVICE_URL=http://localhost:8081
+            mkdir -p ./test-results
+            export JEST_JUNIT_OUTPUT_DIR=./test-results
             npm run test
       - store_test_results:
-          path: ./junit.xml
+          path: ./test-results
           
 commands:
   start-service:
