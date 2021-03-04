@@ -37,8 +37,6 @@ export const TEnumFields = t.interface({
 export type EnumFields = t.TypeOf<typeof TEnumFields>
 
 export const TNumericFields = t.interface({
-  byte_field: t.number,
-  short_field: t.number,
   int_field: t.number,
   long_field: t.number,
   float_field: t.number,
@@ -50,12 +48,10 @@ export type NumericFields = t.TypeOf<typeof TNumericFields>
 
 export const TNonNumericFields = t.interface({
   boolean_field: t.boolean,
-  char_field: t.string,
   string_field: t.string,
   uuid_field: t.string,
   date_field: t.string,
   datetime_field: t.string,
-  time_field: t.string,
 })
 
 export type NonNumericFields = t.TypeOf<typeof TNonNumericFields>

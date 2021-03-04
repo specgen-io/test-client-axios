@@ -58,8 +58,6 @@ describe('nested types', function() {
 
 describe('numeric fields', function() {
   let decoded: NumericFields = {
-    byte_field: 123,
-    short_field: 123,
     int_field: 123,
     long_field: 123,
     float_field: 12.3,
@@ -67,8 +65,6 @@ describe('numeric fields', function() {
     decimal_field: 12.3,
   }
   let encoded = {
-    byte_field: 123,
-    short_field: 123,
     int_field: 123,
     long_field: 123,
     float_field: 12.3,
@@ -90,21 +86,17 @@ describe('numeric fields', function() {
 describe('non numeric fields', function() {
   let decoded: NonNumericFields = {
     boolean_field: true,
-    char_field: 'c',
     string_field: 'some string',
     uuid_field: '123e4567-e89b-12d3-a456-426655440000',
     date_field: '2021-01-01',
     datetime_field: '2021-01-02T23:54',
-    time_field: '23:54',
   }
   let encoded = {
     boolean_field: true,
-    char_field: 'c',
     string_field: 'some string',
     uuid_field: '123e4567-e89b-12d3-a456-426655440000',
     date_field: '2021-01-01',
     datetime_field: '2021-01-02T23:54',
-    time_field: '23:54',
   }
   it('encode', function() {
     expect(encode(TNonNumericFields, decoded)).toStrictEqual(encoded);

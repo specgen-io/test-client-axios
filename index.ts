@@ -108,20 +108,17 @@ export const checkClient = (axiosInstance: AxiosInstance) => {
     return {
         axiosInstance,
 
-        checkQuery: async (parameters: {pString: string, pStringArray: string[], pDate: string, pDateArray: string[], pTime: string, pDatetime: string, pByte: number, pInt: number, pLong: number, pDecimal: number, pChar: string, pEnum: Choice, pStringOpt?: string | null, pStringDefaulted?: string | null}): Promise<CheckQueryResponse> => {
+        checkQuery: async (parameters: {pString: string, pStringArray: string[], pDate: string, pDateArray: string[], pDatetime: string, pInt: number, pLong: number, pDecimal: number, pEnum: Choice, pStringOpt?: string | null, pStringDefaulted?: string | null}): Promise<CheckQueryResponse> => {
             const params = {
                 "p_string": parameters.pString,
                 "p_string_opt": parameters.pStringOpt,
                 "p_string_array": parameters.pStringArray,
                 "p_date": parameters.pDate,
                 "p_date_array": parameters.pDateArray,
-                "p_time": parameters.pTime,
                 "p_datetime": parameters.pDatetime,
-                "p_byte": parameters.pByte,
                 "p_int": parameters.pInt,
                 "p_long": parameters.pLong,
                 "p_decimal": parameters.pDecimal,
-                "p_char": parameters.pChar,
                 "p_enum": parameters.pEnum,
                 "p_string_defaulted": parameters.pStringDefaulted,
             }
