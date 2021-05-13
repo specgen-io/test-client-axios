@@ -20,7 +20,7 @@ import {
   TOptionalFields,
   OrderEvent,
   TOrderEvent
-} from '../models';
+} from '../index';
 
 describe('enum fields', function() {
   let decoded: EnumFields = {enum_field: Choice.THIRD_CHOICE}

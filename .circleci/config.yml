@@ -3,7 +3,7 @@ version: 2.1
 parameters:
   specgen-version:
     type: string
-    default: 1.10.62
+    default: 2.0.178
 
 jobs:
   client-axios:
