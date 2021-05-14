@@ -1,4 +1,5 @@
 export * from 'io-ts';
+export * from 'io-ts-types';
 
 import * as t from 'io-ts';
 
