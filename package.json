@@ -39,6 +39,6 @@
     "io-ts-types": "^0.5.16",
     "monocle-ts": "^2.0.0",
     "newtype-ts": "^0.3.2",
-    "specgen.io": "2.0.190"
+    "specgen.io": "2.0.192"
   }
 }
