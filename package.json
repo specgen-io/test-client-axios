@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "codegen": "specgen client-ts-axios --spec-file spec.yaml --generate-path .",
+    "codegen": "specgen client-ts-axios --spec-file spec.yaml --generate-path . --ts-models io-ts",
     "test": "jest",
     "coverage": "jest --coverage"
   },
@@ -39,6 +39,6 @@
     "io-ts-types": "^0.5.16",
     "monocle-ts": "^2.0.0",
     "newtype-ts": "^0.3.2",
-    "specgen.io": "2.0.192"
+    "specgen.io": "2.0.194"
   }
 }
