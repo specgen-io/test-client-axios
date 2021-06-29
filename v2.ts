@@ -1,14 +1,11 @@
-/* eslint-disable @typescript-eslint/camelcase */
-/* eslint-disable @typescript-eslint/no-magic-numbers */
-import * as t from './io-ts'
+import * as t from './superstruct'
 
-
-export const TMessage = t.interface({
-    bool_field: t.boolean,
-    string_field: t.string,
+export const TMessage = t.object({
+    bool_field: t.boolean(),
+    string_field: t.string(),
 })
 
-export type Message = t.TypeOf<typeof TMessage>
+export type Message = t.Infer<typeof TMessage>
 
 import { AxiosInstance, AxiosRequestConfig } from 'axios'
 

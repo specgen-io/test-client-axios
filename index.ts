@@ -1,22 +1,25 @@
-/* eslint-disable @typescript-eslint/camelcase */
-/* eslint-disable @typescript-eslint/no-magic-numbers */
-import * as t from './io-ts'
+import * as t from './superstruct'
 
-
-export const TMessage = t.interface({
-    int_field: t.number,
-    string_field: t.string,
+export const TMessage = t.object({
+    int_field: t.number(),
+    string_field: t.string(),
 })
 
-export type Message = t.TypeOf<typeof TMessage>
+export type Message = t.Infer<typeof TMessage>
 
-export enum Choice {
-    FIRST_CHOICE = "FIRST_CHOICE",
-    SECOND_CHOICE = "SECOND_CHOICE",
-    THIRD_CHOICE = "THIRD_CHOICE",
+export const TChoice = t.enums ([
+    "FIRST_CHOICE",
+    "SECOND_CHOICE",
+    "THIRD_CHOICE",
+])
+
+export type Choice = t.Infer<typeof TChoice>
+
+export const Choice = {
+    FIRST_CHOICE: <Choice>"FIRST_CHOICE",
+    SECOND_CHOICE: <Choice>"SECOND_CHOICE",
+    THIRD_CHOICE: <Choice>"THIRD_CHOICE",
 }
-
-export const TChoice = t.enum(Choice)
 
 import { AxiosInstance, AxiosRequestConfig } from 'axios'
 
@@ -95,7 +98,7 @@ export const checkClient = (axiosInstance: AxiosInstance) => {
     return {
         axiosInstance,
 
-        checkQuery: async (parameters: {pString: string, pStringArray: string[], pDate: string, pDateArray: string[], pDatetime: string, pInt: number, pLong: number, pDecimal: number, pEnum: Choice, pStringOpt?: string | null, pStringDefaulted?: string | null}): Promise<CheckQueryResponse> => {
+        checkQuery: async (parameters: {pString: string, pStringArray: string[], pDate: string, pDateArray: string[], pDatetime: Date, pInt: number, pLong: number, pDecimal: number, pEnum: Choice, pStringOpt?: string | null, pStringDefaulted?: string | null}): Promise<CheckQueryResponse> => {
             const params = {
                 "p_string": parameters.pString,
                 "p_string_opt": parameters.pStringOpt,

@@ -39,7 +39,7 @@ describe('client check', function() {
             pStringArray: ["string 1", "string 2"],
             pDate: "2021-01-01",
             pDateArray: ["2021-01-02"],
-            pDatetime: "2021-01-02T23:54",
+            pDatetime: new Date("2021-01-02T23:54"),
             pInt: 123,
             pLong: 123,
             pDecimal: 123,
