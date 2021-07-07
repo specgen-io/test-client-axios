@@ -1,39 +1,18 @@
-import * as t from './superstruct'
-
-export const TMessage = t.object({
-    int_field: t.number(),
-    string_field: t.string(),
-})
-
-export type Message = t.Infer<typeof TMessage>
-
-export const TChoice = t.enums ([
-    "FIRST_CHOICE",
-    "SECOND_CHOICE",
-    "THIRD_CHOICE",
-])
-
-export type Choice = t.Infer<typeof TChoice>
-
-export const Choice = {
-    FIRST_CHOICE: <Choice>"FIRST_CHOICE",
-    SECOND_CHOICE: <Choice>"SECOND_CHOICE",
-    THIRD_CHOICE: <Choice>"THIRD_CHOICE",
-}
-
 import { AxiosInstance, AxiosRequestConfig } from 'axios'
+import * as t from './superstruct'
+import * as models from './models'
 
 export const echoClient = (axiosInstance: AxiosInstance) => {
     return {
         axiosInstance,
 
-        echoBody: async (parameters: {body: Message}): Promise<EchoBodyResponse> => {
+        echoBody: async (parameters: {body: models.Message}): Promise<EchoBodyResponse> => {
             const config: AxiosRequestConfig = {}
-            const bodyJson = t.encode(TMessage, parameters.body)
+            const bodyJson = t.encode(models.TMessage, parameters.body)
             const response = await axiosInstance.post(`/echo/body`, bodyJson, config)
             switch (response.status) {
                 case 200:
-                    return Promise.resolve({ status: "ok", data: t.decode(TMessage, response.data) })
+                    return Promise.resolve({ status: "ok", data: t.decode(models.TMessage, response.data) })
                 default:
                     throw new Error(`Unexpected status code ${ response.status }`)
             }
@@ -48,7 +27,7 @@ export const echoClient = (axiosInstance: AxiosInstance) => {
             const response = await axiosInstance.get(`/echo/query`, config)
             switch (response.status) {
                 case 200:
-                    return Promise.resolve({ status: "ok", data: t.decode(TMessage, response.data) })
+                    return Promise.resolve({ status: "ok", data: t.decode(models.TMessage, response.data) })
                 default:
                     throw new Error(`Unexpected status code ${ response.status }`)
             }
@@ -63,7 +42,7 @@ export const echoClient = (axiosInstance: AxiosInstance) => {
             const response = await axiosInstance.get(`/echo/header`, config)
             switch (response.status) {
                 case 200:
-                    return Promise.resolve({ status: "ok", data: t.decode(TMessage, response.data) })
+                    return Promise.resolve({ status: "ok", data: t.decode(models.TMessage, response.data) })
                 default:
                     throw new Error(`Unexpected status code ${ response.status }`)
             }
@@ -74,7 +53,7 @@ export const echoClient = (axiosInstance: AxiosInstance) => {
             const response = await axiosInstance.get(`/echo/url_params/${parameters.intUrl}/${parameters.stringUrl}`, config)
             switch (response.status) {
                 case 200:
-                    return Promise.resolve({ status: "ok", data: t.decode(TMessage, response.data) })
+                    return Promise.resolve({ status: "ok", data: t.decode(models.TMessage, response.data) })
                 default:
                     throw new Error(`Unexpected status code ${ response.status }`)
             }
@@ -83,22 +62,22 @@ export const echoClient = (axiosInstance: AxiosInstance) => {
 }
 
 export type EchoBodyResponse =
-    | { status: "ok", data: Message }
+    | { status: "ok", data: models.Message }
 
 export type EchoQueryResponse =
-    | { status: "ok", data: Message }
+    | { status: "ok", data: models.Message }
 
 export type EchoHeaderResponse =
-    | { status: "ok", data: Message }
+    | { status: "ok", data: models.Message }
 
 export type EchoUrlParamsResponse =
-    | { status: "ok", data: Message }
+    | { status: "ok", data: models.Message }
 
 export const checkClient = (axiosInstance: AxiosInstance) => {
     return {
         axiosInstance,
 
-        checkQuery: async (parameters: {pString: string, pStringArray: string[], pDate: string, pDateArray: string[], pDatetime: Date, pInt: number, pLong: number, pDecimal: number, pEnum: Choice, pStringOpt?: string | null, pStringDefaulted?: string | null}): Promise<CheckQueryResponse> => {
+        checkQuery: async (parameters: {pString: string, pStringArray: string[], pDate: string, pDateArray: string[], pDatetime: Date, pInt: number, pLong: number, pDecimal: number, pEnum: models.Choice, pStringOpt?: string | undefined, pStringDefaulted?: string | undefined}): Promise<CheckQueryResponse> => {
             const params = {
                 "p_string": parameters.pString,
                 "p_string_opt": parameters.pStringOpt,

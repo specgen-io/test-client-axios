@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "codegen": "specgen client-ts-axios --spec-file spec.yaml --generate-path .",
+    "codegen": "specgen client-ts-axios --spec-file spec.yaml --generate-path . --validation superstruct",
     "test": "jest",
     "coverage": "jest --coverage"
   },
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "specgen.io": "2.0.283",
+    "specgen.io": "2.0.291",
     "superstruct": "^0.15.2"
   }
 }
