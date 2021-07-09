@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "specgen.io": "2.0.291",
+    "specgen.io": "2.0.293",
     "superstruct": "^0.15.2"
   }
 }
